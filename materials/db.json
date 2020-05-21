@@ -1,0 +1,33 @@
+{
+  "boards": [
+    {
+      "id": 1,
+      "title": "To-Do"
+    },
+    {
+      "id": 2,
+      "title": "Doing"
+    },
+    {
+      "id": 3,
+      "title": "Done"
+    }
+  ],
+  "cards": [
+    {
+      "id": 1,
+      "description": "Make a clone",
+      "boardId": 1
+    },
+    {
+      "id": 2,
+      "description": "Study",
+      "boardId": 1
+    },
+    {
+      "id": 3,
+      "description": "Seed data",
+      "boardId": 3
+    }
+  ]
+}
