@@ -6,6 +6,15 @@ class TaskElement extends HTMLElement {
 
   connectedCallback() {
     this.render();
+    const deleteButtons = this.shadow.querySelectorAll("span");
+    deleteButtons.forEach((button) => {
+      button.addEventListener("click", async (e) => {
+        const taskId = e.target.id;
+        await fetch(`http://localhost:3000/tasks/${taskId}`, {
+          method: "DELETE"
+        });
+      });
+    });
   }
 
   render() {
@@ -20,7 +29,9 @@ class TaskElement extends HTMLElement {
        padding: 5px;
      }
     </style>
-    <div>${this.getAttribute("description")}</div>`;
+    <div class=tasks>${this.getAttribute("description")}
+    <span id=${this.getAttribute("id")}>x</span>
+    </div>`;
     this.shadow.innerHTML = template;
   }
 }
