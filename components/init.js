@@ -6,7 +6,7 @@ window.addEventListener("DOMContentLoaded", () => {
     json.forEach(({ id, title }) => {
       const boardContainer = document.querySelector(".board-container");
       const board = document.createElement("board-element");
-      board.setAttribute("id", "board-" + id);
+      board.setAttribute("id", "board-row-" + id);
       board.setAttribute("title", title);
       boardContainer.appendChild(board);
     });
@@ -21,8 +21,7 @@ window.addEventListener("DOMContentLoaded", () => {
         const task = document.createElement("task-element");
         task.setAttribute("description", description);
         task.setAttribute("id", "task-" + id);
-        const board = document.querySelector(`#board-${boardId}`);
-        console.log(board.shadowRoot);
+        const board = document.querySelector(`#board-row-${boardId}`);
         const tasks = board.shadowRoot.querySelector(".tasks");
         tasks.appendChild(task);
       }

@@ -2,7 +2,6 @@ class BoardElement extends HTMLElement {
   constructor() {
     super();
     this.shadow = this.attachShadow({ mode: "open" });
-    this._title = "Default Title";
   }
 
   connectedCallback() {
@@ -25,10 +24,11 @@ class BoardElement extends HTMLElement {
        margin-bottom: 10px;
      }
     </style>
-    <div class="board-row">
+    <div class="board-row ${this.getAttribute("id")}">
      <div class="board-column">${this.getAttribute("title")}</div>
      <div class="tasks"></div>
-     <div class="add-card">
+     <div class="add-task">
+      <add-task id=${this.getAttribute("id")}></add-task>
      </div>
      </div>
     </div>`;
