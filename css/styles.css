@@ -11,8 +11,9 @@ nav {
   margin-bottom: 1vh;
 }
 
-nav p {
-  margin-top: 2px;
+nav div {
+  text-align: center;
+  padding: 10px;
 }
 
 .board-container {
