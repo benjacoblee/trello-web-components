@@ -28,6 +28,10 @@ class TaskElement extends HTMLElement {
        margin: 2px;
        padding: 5px;
      }
+
+     span:hover {
+      cursor: pointer;
+     }
     </style>
     <div class=tasks>${this.getAttribute("description")}
     <span id=${this.getAttribute("id")}>x</span>
