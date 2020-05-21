@@ -11,6 +11,10 @@ nav {
   margin-bottom: 1vh;
 }
 
+nav span {
+  margin-top: 2px;
+}
+
 .board-container {
   height: 94vh;
   overflow-x: scroll;
