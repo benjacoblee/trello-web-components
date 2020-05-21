@@ -12,7 +12,6 @@ class AddTask extends HTMLElement {
     clickElement.addEventListener("click", () => {
       const inputElement = document.createElement("input");
       inputElement.type = "text";
-      clickElement = inputElement;
     });
   }
 
