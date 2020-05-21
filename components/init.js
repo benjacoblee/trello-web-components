@@ -20,7 +20,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (id) {
         const task = document.createElement("task-element");
         task.setAttribute("description", description);
-        task.setAttribute("id", "task-" + id);
+        task.setAttribute("id", id);
         const board = document.querySelector(`#board-row-${boardId}`);
         const tasks = board.shadowRoot.querySelector(".tasks");
         tasks.appendChild(task);
