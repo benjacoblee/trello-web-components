@@ -17,6 +17,8 @@ class AddTask extends HTMLElement {
   }
 
   renderForm = () => {
+    const div = this.shadow.querySelector("div");
+    const form = document.createElement("form");
     if (!this._formIsVisible) {
       this._formIsVisible = true;
       const form = document.createElement("form");
@@ -31,11 +33,14 @@ class AddTask extends HTMLElement {
       const submitButton = document.createElement("button");
       submitButton.textContent = "Submit";
       submitButton.addEventListener("click", this.handleSubmit);
-      const div = this.shadow.querySelector("div");
+
       form.appendChild(this._input);
       form.appendChild(this._textarea);
       form.appendChild(submitButton);
       div.appendChild(form);
+    } else {
+      this._formIsVisible = false;
+      div.removeChild(div.lastChild);
     }
   };
 
@@ -54,8 +59,6 @@ class AddTask extends HTMLElement {
         headers: {
           "Content-Type": "application/json"
         }
-      }).then((res) => {
-        console.log(res);
       });
     }
   };
@@ -78,6 +81,9 @@ class AddTask extends HTMLElement {
       div {
        padding: 5px;
        font-weight: bold;
+      }
+      .add-button:hover {
+        cursor: pointer;
       }
       </style>
     <div>Add a Task<span class="add-button"> ➕</span></div>
