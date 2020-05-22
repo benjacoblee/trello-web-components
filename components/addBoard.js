@@ -30,9 +30,9 @@ class AddBoard extends HTMLElement {
             headers: {
               "Content-Type": "application/json"
             }
+          }).then(() => {
+            window.location.reload(true);
           });
-        } else {
-          e.preventDefault();
         }
       });
     }

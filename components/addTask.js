@@ -45,8 +45,8 @@ class AddTask extends HTMLElement {
   };
 
   handleSubmit = async (e) => {
-    e.preventDefault();
     if (this._input.value && this._textarea.value) {
+      e.preventDefault();
       const data = {
         title: this._input.value,
         description: this._textarea.value,
@@ -59,6 +59,9 @@ class AddTask extends HTMLElement {
         headers: {
           "Content-Type": "application/json"
         }
+      }).then((res) => {
+        console.log(res);
+        window.location.reload(true);
       });
     }
   };

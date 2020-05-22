@@ -47,15 +47,17 @@ class BoardElement extends HTMLElement {
         headers: {
           "Content-Type": "application/json"
         }
-      });
+      }).then(() => window.location.reload(true));
     }
   };
 
   handleDelete = async (e) => {
     await fetch(`http://localhost:3000/boards/${this._boardId}`, {
       method: "DELETE"
-    })
-  }
+    });
+
+    window.location.reload(true);
+  };
 
   render() {
     const template = `

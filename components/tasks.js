@@ -12,6 +12,8 @@ class TaskElement extends HTMLElement {
     await fetch(`http://localhost:3000/tasks/${taskId}`, {
       method: "DELETE"
     });
+
+    window.location.reload(true);
   };
 
   handleDisplayClick = () => {

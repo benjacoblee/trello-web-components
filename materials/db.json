@@ -11,10 +11,6 @@
     {
       "id": 3,
       "title": "Done"
-    },
-    {
-      "title": "Some other board",
-      "id": 4
     }
   ],
   "tasks": [
@@ -35,12 +31,6 @@
       "title": "Seed data",
       "description": "As soon as possible",
       "boardId": 3
-    },
-    {
-      "title": "Another Task",
-      "description": "So many tasks",
-      "boardId": "1",
-      "id": 6
     },
     {
       "title": "Web Components",
