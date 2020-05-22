@@ -45,8 +45,8 @@
       "id": 5
     },
     {
-      "title":"Figure out why submit doesn't work consistently",
-      "description": "Strange behavior",
+      "title": "Order",
+      "description": "of operations",
       "boardId": "1",
       "id": 6
     }

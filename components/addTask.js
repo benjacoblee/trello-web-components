@@ -4,12 +4,15 @@ class AddTask extends HTMLElement {
     this.shadow = this.attachShadow({ mode: "open" });
     this._boardId = this.getAttribute("id");
     this._input;
+    this._textarea;
   }
 
   handleSubmit = async (e) => {
-    if (this._input.value) {
+    e.preventDefault();
+    if (this._input.value && this._textarea.value) {
       const data = {
-        description: this._input.value,
+        title: this._input.value,
+        description: this._textarea.value,
         boardId: this._boardId
       };
 
@@ -19,6 +22,8 @@ class AddTask extends HTMLElement {
         headers: {
           "Content-Type": "application/json"
         }
+      }).then((res) => {
+        console.log(res);
       });
     }
   };
@@ -26,6 +31,7 @@ class AddTask extends HTMLElement {
   connectedCallback() {
     this.render();
     this._input = this.shadow.querySelector("input");
+    this._textarea = this.shadow.querySelector("textarea");
     const button = this.shadow.querySelector("button");
     button.addEventListener("click", this.handleSubmit);
   }
@@ -34,26 +40,21 @@ class AddTask extends HTMLElement {
     const template = `
     <style>
       form {
-        display: flex;
-        justify-content: space-between;
+        max-width: 100%;
         height: 100%;
       }
-      input {
+      input, textarea {
         display: block;
         background-color: #FFFFFF;
         border: 1px solid black;
         border-radius: 2px;
         margin: 2px;
-        padding: 5px;
-        width: 100%;
-      }
-      button {
-        display: block;
-        float: right;
+        width: -webkit-fill-available;
       }
       </style>
     <form>
-      <input placeholder="New Task" required></input>
+      <input placeholder="Task Title" required></input>
+      <textarea placeholder="Task Description" rows="4" required></textarea>
       <button>Submit</button>
     </form>
     `;
