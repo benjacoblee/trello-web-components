@@ -32,8 +32,8 @@ class AddTask extends HTMLElement {
     this.render();
     this._input = this.shadow.querySelector("input");
     this._textarea = this.shadow.querySelector("textarea");
-    const button = this.shadow.querySelector("button");
-    button.addEventListener("click", this.handleSubmit);
+    const submitButton = this.shadow.querySelector("button");
+    submitButton.addEventListener("click", this.handleSubmit);
   }
 
   render() {
