@@ -6,8 +6,7 @@ Navigate to cloned directory's location via terminal. In the terminal, run:
 
     npm i
     npm start
-    
-Double click index.html to open in browser.
+    open index.html
 
 ## Application Structure
 - components
