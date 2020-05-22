@@ -2,10 +2,12 @@
 
 ## Installation 
 
-Navigate to cloned directory's location. In the terminal, run:
+Navigate to cloned directory's location via terminal. In the terminal, run:
 
     npm i
     npm start
+    
+Double click index.html to open in browser.
 
 ## Application Structure
 - components
@@ -35,3 +37,6 @@ Navigate to cloned directory's location. In the terminal, run:
 - [ ] modify a card
 - [ ] search for any keywords presents on one or multiple cards. The view should update without reloading the whole page, drag and drop a card from one column to another
 - [ ] Cards and columns should be unique (i.e we should not see 2 cards or 2 columns with the same title).
+
+## Issues
+- Sometimes runs into the issue where child shadow element can't find parent element and thus is unable to render
