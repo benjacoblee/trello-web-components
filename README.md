@@ -32,6 +32,6 @@ Navigate to cloned directory's location. In the terminal, run:
 - [x] click on a card to see its description. The description should be in the same view and extend the card container. It should not open in another page or popup/modal
 
 ### Uncompleted
-- [] modify a card
-- [] search for any keywords presents on one or multiple cards. The view should update without reloading the whole page, drag and drop a card from one column to another
-- [] Cards and columns should be unique (i.e we should not see 2 cards or 2 columns with the same title).
+- [ ] modify a card
+- [ ] search for any keywords presents on one or multiple cards. The view should update without reloading the whole page, drag and drop a card from one column to another
+- [ ] Cards and columns should be unique (i.e we should not see 2 cards or 2 columns with the same title).
