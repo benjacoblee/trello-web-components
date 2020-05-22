@@ -12,10 +12,12 @@ class BoardElement extends HTMLElement {
     this._boardRow = this.shadow.querySelector(".board-row");
     this._boardColumn = this.shadow.querySelector(".board-column");
     const editButton = this.shadow.querySelector(".edit-button");
-    editButton.addEventListener("click", this.handleEdit);
+    const deleteButton = this.shadow.querySelector(".delete-button");
+    editButton.addEventListener("click", this.handleEditDisplay);
+    deleteButton.addEventListener("click", this.handleDelete);
   }
 
-  handleEdit = (e) => {
+  handleEditDisplay = (e) => {
     this._boardColumn.innerHTML = "";
     const form = document.createElement("form");
     this._input = document.createElement("input");
@@ -49,6 +51,12 @@ class BoardElement extends HTMLElement {
     }
   };
 
+  handleDelete = async (e) => {
+    await fetch(`http://localhost:3000/boards/${this._boardId}`, {
+      method: "DELETE"
+    })
+  }
+
   render() {
     const template = `
     <style>
@@ -80,13 +88,19 @@ class BoardElement extends HTMLElement {
         margin: 2px;
         width: -webkit-fill-available;
       }
+
+      span:hover {
+        cursor: pointer;
+      }
     </style>
     <div id="${this.getAttribute("id")}" class="board-row ${this.getAttribute(
       "id"
     )}">
      <div class="board-column">${this.getAttribute(
        "title"
-     )} <span class="edit-button"> 🖊</span></div>
+     )} <span class="edit-button"> 🖊</span>
+        <span class="delete-button"> 🗑️</span>  
+     </div>
      <div class="tasks"></div>
      <div class="add-task">
       <add-task id=${this.getAttribute("id")}></add-task>
