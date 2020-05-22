@@ -34,10 +34,11 @@ class TaskElement extends HTMLElement {
      }
     </style>
     <div class=tasks>
-    <strong>${this.getAttribute("title")}</strong>
+    <strong>${this.getAttribute("title")}</strong><span id=${this.getAttribute(
+      "id"
+    )}> x</span>
     <br>
     ${this.getAttribute("description")}
-    <span id=${this.getAttribute("id")}>x</span>
     </div>`;
     this.shadow.innerHTML = template;
   }
