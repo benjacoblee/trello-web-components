@@ -12,12 +12,15 @@ class BoardElement extends HTMLElement {
     const template = `
     <style>
      .board-row {
-       display: inline-block;
-       background-color: #EBECF0;
-       border: 1px solid black;
-       border-radius: 3px;
-       width: 33%;
-       padding: 5px 10px 5px 10px;
+      display: inline-block;
+      background-color: #EBECF0;
+      border: 1px solid black;
+      border-radius: 3px;
+      width: 33%;
+      padding: 5px 10px 5px 10px;
+      word-wrap: break-word;       
+      white-space: -webkit-pre-wrap; 
+      white-space: normal;
      }
 
      .board-column {
