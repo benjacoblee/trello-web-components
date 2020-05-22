@@ -19,6 +19,7 @@ class BoardElement extends HTMLElement {
     this._input = document.createElement("input");
     this._input.type = "text";
     this._input.placeholder = this.getAttribute("title");
+    this._input.required = true;
     const submitButton = document.createElement("button");
     submitButton.textContent = "Edit";
     form.appendChild(this._input);
@@ -28,21 +29,23 @@ class BoardElement extends HTMLElement {
   };
 
   handleSubmit = async (e) => {
-    e.preventDefault();
     const boardId = this._boardRow.id;
     const boardTitle = this._input.value;
 
-    const data = {
-      title: boardTitle
-    };
+    if (boardTitle) {
+      e.preventDefault();
+      const data = {
+        title: boardTitle
+      };
 
-    await fetch(`http://localhost:3000/boards/${boardId}`, {
-      method: "PATCH",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    });
+      await fetch(`http://localhost:3000/boards/${boardId}`, {
+        method: "PATCH",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+    }
   };
 
   render() {
