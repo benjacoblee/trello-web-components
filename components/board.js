@@ -2,11 +2,48 @@ class BoardElement extends HTMLElement {
   constructor() {
     super();
     this.shadow = this.attachShadow({ mode: "open" });
+    this._input;
   }
 
   connectedCallback() {
     this.render();
+    this._boardRow = this.shadow.querySelector(".board-row");
+    this._boardColumn = this.shadow.querySelector(".board-column");
+    const editButton = this.shadow.querySelector(".edit-button");
+    editButton.addEventListener("click", this.handleEdit);
   }
+
+  handleEdit = (e) => {
+    this._boardColumn.innerHTML = "";
+    const form = document.createElement("form");
+    this._input = document.createElement("input");
+    this._input.type = "text";
+    this._input.placeholder = this.getAttribute("title");
+    const submitButton = document.createElement("button");
+    submitButton.textContent = "Edit";
+    form.appendChild(this._input);
+    form.appendChild(submitButton);
+    this._boardColumn.appendChild(form);
+    submitButton.addEventListener("click", this.handleSubmit);
+  };
+
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    const boardId = this._boardRow.id;
+    const boardTitle = this._input.value;
+
+    const data = {
+      title: boardTitle
+    };
+
+    await fetch(`http://localhost:3000/boards/${boardId}`, {
+      method: "PATCH",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+  };
 
   render() {
     const template = `
@@ -26,9 +63,26 @@ class BoardElement extends HTMLElement {
      .board-column {
        margin-bottom: 10px;
      }
+
+     form {
+        max-width: 100%;
+        height: 100%;
+      }
+      input {
+        display: inline-block;
+        background-color: #FFFFFF;
+        border: 1px solid black;
+        border-radius: 2px;
+        margin: 2px;
+        width: -webkit-fill-available;
+      }
     </style>
-    <div class="board-row ${this.getAttribute("id")}">
-     <div class="board-column">${this.getAttribute("title")}</div>
+    <div id="${this.getAttribute("id")}" class="board-row ${this.getAttribute(
+      "id"
+    )}">
+     <div class="board-column">${this.getAttribute(
+       "title"
+     )} <span class="edit-button"> 🖊</span></div>
      <div class="tasks"></div>
      <div class="add-task">
       <add-task id=${this.getAttribute("id")}></add-task>
