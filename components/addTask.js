@@ -5,7 +5,39 @@ class AddTask extends HTMLElement {
     this._boardId = this.getAttribute("id");
     this._input;
     this._textarea;
+    this._formIsVisible = false;
   }
+
+  connectedCallback() {
+    this.render();
+    this._input;
+    this._textarea;
+    const addTaskButton = this.shadow.querySelector(".add-button");
+    addTaskButton.addEventListener("click", this.renderForm);
+  }
+
+  renderForm = () => {
+    if (!this._formIsVisible) {
+      this._formIsVisible = true;
+      const form = document.createElement("form");
+      this._input = document.createElement("input");
+      this._input.type = "text";
+      this._input.placeholder = "Task Title";
+      this._input.required = true;
+      this._textarea = document.createElement("textarea");
+      this._textarea.placeholder = "Task Description";
+      this._textarea.rows = 4;
+      this._textarea.required = true;
+      const submitButton = document.createElement("button");
+      submitButton.textContent = "Submit";
+      submitButton.addEventListener("click", this.handleSubmit);
+      const div = this.shadow.querySelector("div");
+      form.appendChild(this._input);
+      form.appendChild(this._textarea);
+      form.appendChild(submitButton);
+      div.appendChild(form);
+    }
+  };
 
   handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,14 +60,6 @@ class AddTask extends HTMLElement {
     }
   };
 
-  connectedCallback() {
-    this.render();
-    this._input = this.shadow.querySelector("input");
-    this._textarea = this.shadow.querySelector("textarea");
-    const submitButton = this.shadow.querySelector("button");
-    submitButton.addEventListener("click", this.handleSubmit);
-  }
-
   render() {
     const template = `
     <style>
@@ -43,7 +67,7 @@ class AddTask extends HTMLElement {
         max-width: 100%;
         height: 100%;
       }
-      input, textarea {
+      div, input, textarea {
         display: block;
         background-color: #FFFFFF;
         border: 1px solid black;
@@ -51,12 +75,12 @@ class AddTask extends HTMLElement {
         margin: 2px;
         width: -webkit-fill-available;
       }
+      div {
+       padding: 5px;
+       font-weight: bold;
+      }
       </style>
-    <form>
-      <input placeholder="Task Title" required></input>
-      <textarea placeholder="Task Description" rows="4" required></textarea>
-      <button>Submit</button>
-    </form>
+    <div>Add a Task<span class="add-button"> ➕</span></div>
     `;
 
     this.shadow.innerHTML = template;
