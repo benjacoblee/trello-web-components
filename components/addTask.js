@@ -3,33 +3,60 @@ class AddTask extends HTMLElement {
     super();
     this.shadow = this.attachShadow({ mode: "open" });
     this._boardId = this.getAttribute("id");
+    this._input;
   }
+
+  handleSubmit = async (e) => {
+    if (this._input.value) {
+      const data = {
+        description: this._input.value,
+        boardId: this._boardId
+      };
+
+      await fetch("http://localhost:3000/tasks", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+    }
+  };
 
   connectedCallback() {
     this.render();
-
-    let clickElement = this.shadowRoot.querySelector("span");
-    clickElement.addEventListener("click", () => {
-      const inputElement = document.createElement("input");
-      inputElement.type = "text";
-    });
+    this._input = this.shadow.querySelector("input");
+    const button = this.shadow.querySelector("button");
+    button.addEventListener("click", this.handleSubmit);
   }
 
   render() {
     const template = `
     <style>
-      div {
+      form {
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+      }
+      input {
         display: block;
         background-color: #FFFFFF;
         border: 1px solid black;
         border-radius: 2px;
         margin: 2px;
         padding: 5px;
+        width: 100%;
+      }
+      button {
+        display: block;
+        float: right;
       }
       </style>
-     <div>
-    <p>Add a card <span>+</span></p>
-    </div>`;
+    <form>
+      <input placeholder="New Task" required></input>
+      <button>Submit</button>
+    </form>
+    `;
 
     this.shadow.innerHTML = template;
   }
