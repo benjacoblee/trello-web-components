@@ -7,6 +7,7 @@ class TaskElement extends HTMLElement {
   }
 
   handleDeleteClick = async (e) => {
+    e.stopPropagation();
     const taskId = e.target.id;
     await fetch(`http://localhost:3000/tasks/${taskId}`, {
       method: "DELETE"
