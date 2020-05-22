@@ -62,7 +62,7 @@ class AddBoard extends HTMLElement {
       }
       
     </style>
-    <div>Add a Board <span>+</span></div>
+    <div>Add a Board <span>➕</span></div>
     `;
     this.shadow.innerHTML = template;
   }
