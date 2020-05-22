@@ -33,7 +33,10 @@ class TaskElement extends HTMLElement {
       cursor: pointer;
      }
     </style>
-    <div class=tasks>${this.getAttribute("description")}
+    <div class=tasks>
+    <strong>${this.getAttribute("title")}</strong>
+    <br>
+    ${this.getAttribute("description")}
     <span id=${this.getAttribute("id")}>x</span>
     </div>`;
     this.shadow.innerHTML = template;

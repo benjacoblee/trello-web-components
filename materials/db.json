@@ -16,18 +16,39 @@
   "tasks": [
     {
       "id": 1,
-      "description": "Make a clone",
+      "title": "Make a clone",
+      "description": "Self-explanatory",
       "boardId": 1
     },
     {
       "id": 2,
-      "description": "Study",
+      "title": "Study",
+      "description": "is important for growth",
       "boardId": 1
     },
     {
       "id": 3,
-      "description": "Seed data",
+      "title": "Seed data",
+      "description": "As soon as possible",
       "boardId": 3
+    },
+    {
+      "title": "Web Components",
+      "description": "something something",
+      "boardId": "2",
+      "id": 4
+    },
+    {
+      "title": "Submit",
+      "description": "Add Card",
+      "boardId": "3",
+      "id": 5
+    },
+    {
+      "title":"Figure out why submit doesn't work consistently",
+      "description": "Strange behavior",
+      "boardId": "1",
+      "id": 6
     }
   ]
 }
