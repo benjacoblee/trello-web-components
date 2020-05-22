@@ -2,7 +2,7 @@
   "boards": [
     {
       "id": 1,
-      "title": "To-Doing"
+      "title": "Todo"
     },
     {
       "id": 2,
@@ -43,6 +43,12 @@
       "description": "Add Card",
       "boardId": "3",
       "id": 5
+    },
+    {
+      "title": "Another Task",
+      "description": "So many tasks",
+      "boardId": "1",
+      "id": 6
     }
   ]
 }

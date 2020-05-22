@@ -3,10 +3,12 @@ class BoardElement extends HTMLElement {
     super();
     this.shadow = this.attachShadow({ mode: "open" });
     this._input;
+    this._boardId;
   }
 
   connectedCallback() {
     this.render();
+    this._boardId = this.getAttribute("id");
     this._boardRow = this.shadow.querySelector(".board-row");
     this._boardColumn = this.shadow.querySelector(".board-column");
     const editButton = this.shadow.querySelector(".edit-button");
@@ -29,7 +31,6 @@ class BoardElement extends HTMLElement {
   };
 
   handleSubmit = async (e) => {
-    const boardId = this._boardRow.id;
     const boardTitle = this._input.value;
 
     if (boardTitle) {
@@ -38,7 +39,7 @@ class BoardElement extends HTMLElement {
         title: boardTitle
       };
 
-      await fetch(`http://localhost:3000/boards/${boardId}`, {
+      await fetch(`http://localhost:3000/boards/${this._boardId}`, {
         method: "PATCH",
         body: JSON.stringify(data),
         headers: {
