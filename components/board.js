@@ -73,6 +73,16 @@ class BoardElement extends HTMLElement {
       white-space: normal;
      }
 
+     @media only screen and (max-width: 768px) {
+      /* For mobile phones: */
+      .board-row {
+        display: block;
+        width: 80%;
+        margin: 0 auto;
+        margin-bottom: 20px;
+      }
+    }
+
      .board-column {
        margin-bottom: 10px;
      }

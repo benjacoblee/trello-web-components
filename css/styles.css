@@ -7,14 +7,17 @@ html {
 }
 
 nav {
-  height: 5vh;
+  display: flex;
+  justify-content: center;
   background: rgba(0, 0, 0, 0.32);
   /* margin-bottom: 1vh; */
 }
 
 nav div {
-  text-align: center;
-  padding-top: 10px;
+  padding: 10px;
+  font-style: italic;
+  font-size: x-large;
+  color: white;
 }
 
 .board-container {
@@ -24,4 +27,13 @@ nav div {
   /* overflow-y: hidden; */
   white-space: nowrap;
   margin: 5px;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .board-container {
+    width: 100%;
+    margin: 0;
+    display: block;
+  }
 }
