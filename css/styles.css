@@ -18,9 +18,10 @@ nav div {
 }
 
 .board-container {
-  height: 92vh;
+  height: 89vh;
   overflow-x: scroll;
-  overflow-y: hidden;
+  display: flex;
+  /* overflow-y: hidden; */
   white-space: nowrap;
   margin: 5px;
 }

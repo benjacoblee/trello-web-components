@@ -65,7 +65,8 @@ class BoardElement extends HTMLElement {
       background-color: #EBECF0;
       border: 1px solid black;
       border-radius: 3px;
-      width: 33%;
+      width: 300px;
+      margin: 0 30px 0 0;
       padding: 5px 10px 5px 10px;
       word-wrap: break-word;       
       white-space: -webkit-pre-wrap; 

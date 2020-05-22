@@ -11,6 +11,10 @@
     {
       "id": 3,
       "title": "Done"
+    },
+    {
+      "title": "Some other board",
+      "id": 4
     }
   ],
   "tasks": [
@@ -31,12 +35,6 @@
       "title": "Seed data",
       "description": "As soon as possible",
       "boardId": 3
-    },
-    {
-      "title": "Submit",
-      "description": "Add Card",
-      "boardId": "3",
-      "id": 5
     },
     {
       "title": "Another Task",
